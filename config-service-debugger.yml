@@ -6,4 +6,4 @@ info: # /actuator/info
 
 logging:
   level:
-    com.sap.cloudatlas: OFF
+    com.sap.cloudatlas: DEBUG
