@@ -1,0 +1,9 @@
+
+# Actuator Endpoint Configurations
+info: # /actuator/info
+  app:
+    description: "A debug service acting as a config client, listening to a shared message broker for config changes."
+
+logging:
+  level:
+    com.sap.cloudatlas: DEBUG
