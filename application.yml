@@ -1,0 +1,66 @@
+# This file contains the default configurations for all
+# Spring applications connecting to the config-server.
+# The configs given here are for local development and 
+# will be overridden by properties in application-cloud.yml.
+# Every Spring application therefore needs to be deployed with ...
+# 
+# env: 
+#  spring.profiles.active: cloud
+# 
+# ... in their manifest.yml
+
+# Logging Levels:
+logging:
+  level: 
+    com.equalitites: DEBUG # Make sure we see all our own logs.
+    com.netflix: OFF       # Turn off logs about Eureka not being present. Once Eureka is up, services will find it.
+
+# Management Endpoints
+management:
+  endpoints:
+    web.exposure.include: "*"    # expose all actuator web endpoints
+  endpoint:
+    refresh.enabled: true        # enable /actuator/refresh endpoint.
+    health.show-details: always
+
+# Eureka Client Configurations:
+# 
+# Should generally be managed in each client application / service separately.
+# This is because the config-server itself should be found via the 
+# service registry. Therefore, configurations can only be fetched
+# once a client has connected to Eureka and looked up the config-server.
+# Hence, every client needs to know where to find Eureka BEFORE it 
+# can get any configurations from the config-server.
+eureka:
+  client:
+    registryFetchIntervalSeconds: 2 # Only for local development.
+    healthcheck.enabled: true       # Enable clients to send their health status to Eureka with every Eureka heartbeat.
+  instance:
+    leaseRenewalIntervalInSeconds: 2 # Only for local development.
+
+spring:
+  
+  cloud:
+    # Tracing configuations:
+    # Sampler probability should be between 0.0 and 1.0. 
+    # 0.1 is the default, meaning that 10% of requests are 
+    # actually traced. The rest is not for performance reasons.
+    sleuth:
+      sampler:
+        probability: 1.0
+
+  # Rabbit MQ binder configurations. These will be required for all
+  # applications that are part of the Spring Cloud Bus and need to 
+  # receive configuration updates. Note: these will also be used by the
+  # config-server itself!
+  rabbitmq:
+    host: localhost # TODO: properly handle for Cloud deployment.
+    port: 5672
+    username: guest # TODO: outsource to a vault.
+    password: guest # TODO: outsource to a vault.
+
+# Actuator Endpoint Configurations
+info: # /actuator/info
+  app:
+    name: ${spring.application.name:application}
+    #description: "Should be specified by respective application."
