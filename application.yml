@@ -1,19 +1,14 @@
 # This file contains the default configurations for all
 # Spring applications connecting to the config-server.
 # The configs given here are for local development and 
-# will be overridden by properties in application-cloud.yml.
-# Every Spring application therefore needs to be deployed with ...
-# 
-# env: 
-#  spring.profiles.active: cloud
-# 
-# ... in their manifest.yml
+# will be overridden by properties in application-cloud.yml
+# when deployed in the cloud (i.e. when 
+# 'spring.profiles.active: cloud' is set)
 
 # Logging Levels:
 logging:
   level: 
-    com.equalitites: DEBUG # Make sure we see all our own logs.
-    com.netflix: OFF       # Turn off logs about Eureka not being present. Once Eureka is up, services will find it.
+    com.netflix: OFF  # Turn off logs about Eureka not being present. Once Eureka is up, services will find it.
 
 # Management Endpoints
 management:
@@ -48,16 +43,6 @@ spring:
     sleuth:
       sampler:
         probability: 1.0
-
-  # Rabbit MQ binder configurations. These will be required for all
-  # applications that are part of the Spring Cloud Bus and need to 
-  # receive configuration updates. Note: these will also be used by the
-  # config-server itself!
-  rabbitmq:
-    host: localhost # TODO: properly handle for Cloud deployment.
-    port: 5672
-    username: guest # TODO: outsource to a vault.
-    password: guest # TODO: outsource to a vault.
 
 # Actuator Endpoint Configurations
 info: # /actuator/info
