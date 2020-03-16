@@ -1,3 +1,4 @@
+---
 # This file contains the default configurations for all
 # Spring applications connecting to the config-server.
 # The configs given here are for local development and 
