@@ -5,6 +5,12 @@
 # when deployed in the cloud (i.e. when 
 # 'spring.profiles.active: cloud' is set)
 
+# Actuator Endpoint Configurations
+info: # /actuator/info
+  app:
+    name: ${spring.application.name:application}
+    #description: "Should be specified by respective application in application-specific .yml file."
+
 # Logging Levels:
 logging:
   level: 
@@ -34,7 +40,6 @@ eureka:
     leaseRenewalIntervalInSeconds: 2 # Only for local development.
 
 spring:
-  
   cloud:
     # Tracing configuations:
     # Sampler probability should be between 0.0 and 1.0. 
@@ -43,9 +48,3 @@ spring:
     sleuth:
       sampler:
         probability: 1.0
-
-# Actuator Endpoint Configurations
-info: # /actuator/info
-  app:
-    name: ${spring.application.name:application}
-    #description: "Should be specified by respective application."

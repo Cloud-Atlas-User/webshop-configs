@@ -1,8 +1,5 @@
+# Cloud deployment-specific Eureka instance / metadata configurations.
 eureka:
-  client: 
-    serviceUrl:
-      defaultZone: ${eureka-server-url}
-
   instance:
     ## This information will be part of the InstanceInfo returned by DiscoveryClient / EurekaClient.
     ## Unfortunately, these have to be specified explicitly, since Eureka creates these URLs wrongly
