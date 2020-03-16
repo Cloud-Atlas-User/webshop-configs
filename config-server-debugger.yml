@@ -1,4 +1,3 @@
-
 # Actuator Endpoint Configurations
 info: # /actuator/info
   app:
