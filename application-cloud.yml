@@ -10,11 +10,23 @@ eureka:
     registryFetchIntervalSeconds: 30 # only for local development.
   instance:
     leaseRenewalIntervalInSeconds: 30 # only for local development.
-
-#spring.zipkin.base-url=${vcap.services.zipkin-service.credentials.uri}
-#spring.rabbitmq.addresses=${vcap.services.reservations-rabbitmq.credentials.uri}
-#spring.rabbitmq.addresses = ${vcap.services.reservations-rabbitmq.credentials.uri}
-#spring.rabbitmq.host=${vcap.services.reservations-rabbitmq.credentials.uri}
+    ## This information will be part of the InstanceInfo returned by DiscoveryClient / EurekaClient.
+    ## Unfortunately, these have to be specified explicitly, since Eureka creates these URLs wrongly
+    ## when running on CF. 
+    ## See: https://cloud.spring.io/spring-cloud-netflix/multi/multi__service_discovery_eureka_clients.html
+    homePageUrl:          https://${vcap.application.uris[0]:localhost:${server.port}}/   
+    statusPageUrl:        https://${vcap.application.uris[0]:localhost:${server.port}}/actuator/info 
+    healthCheckUrl:       https://${vcap.application.uris[0]:localhost:${server.port}}/actuator/health
+    secureHealthCheckUrl: https://${vcap.application.uris[0]:localhost:${server.port}}/actuator/health
+    ## set the host name explicitly when in Cloud Foundry.
+    hostname:             ${vcap.application.uris[0]:localhost:${server.port}}
+    nonSecurePortEnabled: false
+    securePortEnabled:    true
+    securePort:           443
+    metadata-map:
+      # Example for additional instance metadata.
+      cfAppGuid:       ${vcap.application.application_id}
+      cfInstanceIndex: ${INSTANCE_INDEX}
 
 spring:
   cloud:
