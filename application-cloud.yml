@@ -13,8 +13,6 @@ eureka:
     metadata-map:
       cfAppGuid:       ${vcap.application.application_id}
       cfInstanceIndex: ${INSTANCE_INDEX}
-      onboardingUrl: https://${vcap.application.uris[0]}/mt/v1.0/subscriptions/tenants/{tenantId}
-      onboardingGetDependenciesUrl: https://${vcap.application.uris[0]}/mt/v1.0/subscriptions/dependencies
 
 spring:
   cloud:
