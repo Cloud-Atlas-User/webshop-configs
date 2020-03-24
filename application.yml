@@ -38,7 +38,9 @@ eureka:
     healthcheck.enabled: true       # Enable clients to send their health status to Eureka with every Eureka heartbeat.
   instance:
     leaseRenewalIntervalInSeconds: 2 # Only for local development.
-
+    metadata-map:
+      onboardingUrl: http://localhost:${server.port}/mt/v1.0/subscriptions/tenants/{tenantId}
+      onboardingGetDependenciesUrl: http://localhost:${server.port}/mt/v1.0/subscriptions/dependencies
 spring:
   cloud:
     # Tracing configuations:
