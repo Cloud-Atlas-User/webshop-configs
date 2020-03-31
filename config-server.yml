@@ -2,3 +2,7 @@
 info: # /actuator/info
   app:
     description: "A central configuration server. It's configurations are located here: ${spring.cloud.config.server.composite[0].uri}"
+
+logging:
+  level:
+    org.springframework: DEBUG
