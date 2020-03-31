@@ -8,4 +8,6 @@ info: # /actuator/info
 # via Spring Cloud Bus to service instance. 
 logging:
   level:
-    com.sap.cloudatlas: DEBUG
+    com.sap.cloudatlas: 
+
+doit: true
