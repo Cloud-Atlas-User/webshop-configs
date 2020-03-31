@@ -8,4 +8,4 @@ info: # /actuator/info
 # via Spring Cloud Bus to service instance. 
 logging:
   level:
-    com.sap.cloudatlas: ERROR
+    com.sap.cloudatlas: WARN
