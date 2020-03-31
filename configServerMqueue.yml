@@ -5,4 +5,4 @@ info: # /actuator/info
 
 logging:
   level:
-    org.springframework.cloud: DEBUG
+    org.springframework: DEBUG
