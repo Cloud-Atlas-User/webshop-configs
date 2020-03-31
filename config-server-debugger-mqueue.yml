@@ -1,0 +1,11 @@
+# Actuator Endpoint Configurations
+info: # /actuator/info
+  app:
+    description: "A debug service acting as a config client, listening to a shared message broker for config changes."
+
+# For testing purposes: enable com.sap.cloudatlas logger to log in DEBUG mode.
+# Change this and push it, to see how config server pulls changes and distributes them
+# via Spring Cloud Bus to service instance. 
+logging:
+  level:
+    com.sap.cloudatlas: ERROR
