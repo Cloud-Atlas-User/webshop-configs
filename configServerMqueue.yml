@@ -1,0 +1,4 @@
+# Actuator Endpoint Configurations
+info: # /actuator/info
+  app:
+    description: "A central configuration server (based on MQueue as message broker). It's configurations are located here: ${spring.cloud.config.server.composite[0].uri}"
