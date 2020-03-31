@@ -14,7 +14,7 @@ info: # /actuator/info
 # Logging Levels:
 logging:
   level: 
-    com.netflix: OFF  # Turn off logs about Eureka not being present. Once Eureka is up, services will find it.
+    com.netflix: ERROR  # Turn off logs about Eureka not being present. Once Eureka is up, services will find it.
 
 # Management Endpoints
 management:
