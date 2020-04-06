@@ -1,0 +1,4 @@
+# Actuator Endpoint Configurations
+info: # /actuator/info
+  app:
+    description: "A service for users to check out and pay the goods they ordered."
