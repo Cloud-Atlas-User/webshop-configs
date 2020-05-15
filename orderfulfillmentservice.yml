@@ -1,4 +1,4 @@
 # Actuator Endpoint Configurations
 info: # /actuator/info
   app:
-    description: "A service to manage the order fulfillment once the user has checked out."
+    description: "A service to manage the order fulfillment once the user has checked out. Chenaged"
